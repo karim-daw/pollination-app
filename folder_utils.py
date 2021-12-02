@@ -1,6 +1,6 @@
 import os
 
-def create_folder(folderName):
+def create_folder(folderName) -> None:
     '''Check if directory exists, if not, create it'''
     
     # reference from https://djangocentral.com/check-if-a-directory-exists-if-not-create-it/
@@ -16,3 +16,7 @@ def create_folder(folderName):
 
     else:
         print(myDir, "folder already exists.")
+
+
+def name_file(fileName = "Untitled.hbjson"):
+    pass
