@@ -9,9 +9,11 @@ This script shows how to:
 
 """
 
+from genericpath import isdir
 from honeybee.room import Room, Vector3D
 from honeybee.model import Model
 from honeybee_radiance.sensorgrid import SensorGrid
+import folder_utils
 
 class Shoebox:
 
@@ -125,6 +127,12 @@ class Shoebox:
 
         model.properties.radiance.add_sensor_grid(sensor_grid)
 
-        model.to_hbjson(name=model.identifier, folder='.')
+        # check if folder exists, if not creat one
+        folderName = "honeybee-json-files"
+        folder_utils.create_folder(folderName)
+
+        model.to_hbjson(name=model.identifier, folder=folderName)
         print("Successfully saved model to .hbjson file...{0}".format(model.identifier))
+    
+
 
