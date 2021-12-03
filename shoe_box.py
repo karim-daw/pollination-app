@@ -27,8 +27,7 @@ class Shoebox:
         self._gridSize = 0.2
         self._gridOffset = 0.8
         self._room = Room
-  
-
+ 
     # getters and setters for init dimensions
     @property
     def width(self) -> None:
