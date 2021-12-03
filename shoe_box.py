@@ -117,7 +117,7 @@ class Shoebox:
         #_room = self.createRoom()
         # create a model and add the room to it
         print("Creating Model...")
-        model = Model('shoe-box', rooms=[self._room], units='Meters')
+        model: Model = Model('shoe-box', rooms=[self._room], units='Meters')
 
         # create a sensor grid - this is only required if you want to run grid-based studies
         # use generate_grid method to create a sensor grid from room floor
