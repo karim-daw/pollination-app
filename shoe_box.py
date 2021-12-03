@@ -133,10 +133,10 @@ class Shoebox:
         folder_utils.createFolder(folderName)
 
         # create file name
-        width = "wt" + str(self.width)
-        height = "ht" + str(self.height)
-        depth = "dt" + str(self.depth)
-        wwr = "wr" +  str(self.wwr)
+        width = "w" + str(self.width)
+        height = "h" + str(self.height)
+        depth = "d" + str(self.depth)
+        wwr = "wrr" +  str(self.wwr)
 
         fileName = folder_utils.nameFile(width,height, depth, wwr)
         fileName = model.identifier + "_" + fileName
