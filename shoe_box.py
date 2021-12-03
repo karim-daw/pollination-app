@@ -13,7 +13,7 @@ from genericpath import isdir
 from honeybee.room import Room, Vector3D
 from honeybee.model import Model
 from honeybee_radiance.sensorgrid import SensorGrid
-import folder_utils
+from utils import folder_utils
 
 
 class Shoebox:
@@ -130,9 +130,18 @@ class Shoebox:
 
         # check if folder exists, if not creat one
         folderName = "honeybee-json-files"
-        folder_utils.create_folder(folderName)
+        folder_utils.createFolder(folderName)
 
-        model.to_hbjson(name=model.identifier, folder=folderName)
+        # create file name
+        width = "wt" + str(self.width)
+        height = "ht" + str(self.height)
+        depth = "dt" + str(self.depth)
+        wwr = "wr" +  str(self.wwr)
+
+        fileName = folder_utils.nameFile(width,height, depth, wwr)
+        fileName = model.identifier + "_" + fileName
+
+        model.to_hbjson(name=fileName, folder=folderName)
         print("Successfully saved model to .hbjson file...{0}".format(model.identifier))
     
 

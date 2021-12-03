@@ -1,6 +1,7 @@
 import os
+from typing import List
 
-def create_folder(folderName) -> None:
+def createFolder(folderName: str) -> None:
     '''Check if directory exists, if not, create it'''
     
     # reference from https://djangocentral.com/check-if-a-directory-exists-if-not-create-it/
@@ -18,11 +19,11 @@ def create_folder(folderName) -> None:
         print(myDir, "folder already exists...")
 
 
-def name_file(*args):
+def nameFile(*args) -> str:
     """converts list of args to a string for file nameing"""
 
     if args:
-        fileName = ""
+        fileName: str = ""
         for i, arg in enumerate(args):
             # convert to string
             arg = str(arg)
@@ -33,6 +34,14 @@ def name_file(*args):
             else:
                 fileName += arg
     else:
-        fileName = "Untitled.hbjson"
+        fileName = "untitled.hbjson"
     
     return fileName
+
+def total(xs: List[float]) -> float:
+    result: float = 0.0
+    for x in xs:
+        result += x
+    return result
+    
+
