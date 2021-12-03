@@ -15,6 +15,7 @@ from honeybee.model import Model
 from honeybee_radiance.sensorgrid import SensorGrid
 import folder_utils
 
+
 class Shoebox:
 
     def __init__(self, width = 4.0, height = 3.5, depth = 6.0) -> None:

@@ -15,8 +15,24 @@ def create_folder(folderName) -> None:
         print("created folder : ", myDir)
 
     else:
-        print(myDir, "folder already exists.")
+        print(myDir, "folder already exists...")
 
 
-def name_file(fileName = "Untitled.hbjson"):
-    pass
+def name_file(*args):
+    """converts list of args to a string for file nameing"""
+
+    if args:
+        fileName = ""
+        for i, arg in enumerate(args):
+            # convert to string
+            arg = str(arg)
+            if i != len(args)-1:
+                # add seperator
+                arg += "_"
+                fileName += arg
+            else:
+                fileName += arg
+    else:
+        fileName = "Untitled.hbjson"
+    
+    return fileName
