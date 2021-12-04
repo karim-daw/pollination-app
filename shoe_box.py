@@ -13,6 +13,7 @@ from genericpath import isdir
 from honeybee.room import Room, Vector3D
 from honeybee.model import Model
 from honeybee_radiance.sensorgrid import SensorGrid
+from ladybug_geometry.geometry3d.mesh import Mesh3D
 from utils import folder_utils
 
 
@@ -27,6 +28,7 @@ class Shoebox:
         self._gridSize = 0.2
         self._gridOffset = 0.8
         self._room = Room
+        self._model = Model
  
     # getters and setters for init dimensions
     @property
@@ -112,36 +114,40 @@ class Shoebox:
         self._room = room
     
     def createModel(self) -> None:
-        # get room
-        #_room = self.createRoom()
+
         # create a model and add the room to it
-        print("Creating Model...")
+        print("Creating model...")
         model: Model = Model('shoe-box', rooms=[self._room], units='Meters')
 
         # create a sensor grid - this is only required if you want to run grid-based studies
         # use generate_grid method to create a sensor grid from room floor
-        grid_mesh = self._room.generate_grid(x_dim=self.gridSize, y_dim=self.gridSize, offset=self.gridOffset)
+        grid_mesh: Mesh3D = self._room.generate_grid(x_dim=self.gridSize, y_dim=self.gridSize, offset=self.gridOffset)
 
-        # create a sensor grid using the generated mesh
-        sensor_grid = SensorGrid.from_mesh3d(identifier='room', mesh=grid_mesh)
-
+        # create a sensor grid using the generated mesh and add to model
+        sensor_grid: SensorGrid = SensorGrid.from_mesh3d(identifier='room', mesh=grid_mesh)
         model.properties.radiance.add_sensor_grid(sensor_grid)
 
+        self._model: Model = model
+        print("Successfully created model...{0}".format(self._model.identifier))
+    
+    def saveToHBJson(self) -> None:
+
         # check if folder exists, if not creat one
-        folderName = "honeybee-json-files"
+        print("Checking if output folder exists in root dir...")
+        folderName: str = "honeybee-json-files"
         folder_utils.createFolder(folderName)
 
         # create file name
-        width = "w" + str(self.width)
-        height = "h" + str(self.height)
-        depth = "d" + str(self.depth)
-        wwr = "wrr" +  str(self.wwr)
+        width: float = "w" + str(self.width)
+        height: float = "h" + str(self.height)
+        depth: float = "d" + str(self.depth)
+        wwr: float = "wrr" +  str(self.wwr)
 
-        fileName = folder_utils.nameFile(width,height, depth, wwr)
-        fileName = model.identifier + "_" + fileName
+        fileName: str = folder_utils.nameFile(width,height, depth, wwr)
+        fileName = self._model.identifier + "_" + fileName
 
-        model.to_hbjson(name=fileName, folder=folderName)
-        print("Successfully saved model to .hbjson file...{0}".format(model.identifier))
+        self._model.to_hbjson(name=fileName, folder=folderName)
+        print("Successfully saved model to .hbjson file...{0}".format(fileName))
     
 
 
