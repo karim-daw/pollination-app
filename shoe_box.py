@@ -10,6 +10,8 @@ This script shows how to:
 """
 
 from genericpath import isdir
+from typing import List
+from typing import Dict
 from honeybee.room import Room, Vector3D
 from honeybee.model import Model
 from honeybee_radiance.sensorgrid import SensorGrid
@@ -30,7 +32,26 @@ class Shoebox:
         self._gridOffset = 0.8
         self._room = Room
         self._model = Model
- 
+    
+
+    def getParameterFromDict(self,par: str) -> Dict:
+        """
+        width: float = "w" + str(self.width)
+        height: float = "h" + str(self.height)
+        depth: float = "d" + str(self.depth)
+        wwr: float = "wrr" +  str(self.wwr)
+        """
+        parameterDict = {
+            "width" : self.width,
+            "height" : self.height,
+            "depth" : self.depth,
+            "wwr" : self.wwr,
+            "gridSize" : self.gridSize,
+            "gridOffset" : self.gridOffset,
+        }
+
+        return parameterDict[par]
+
     # getters and setters for init dimensions
     @property
     def width(self) -> None:
@@ -95,6 +116,8 @@ class Shoebox:
         print("Setting grid offset...{0}".format(value))
         self._gridOffset = value
 
+    # class methods
+
     # defining room
     def createRoom(self) -> None:
         """ creates a honeybee room based on width depth and height parameters"""
@@ -143,16 +166,21 @@ class Shoebox:
         folder_utils.createFolder(folderName)
 
         # create file name
+        """
         width: float = "w" + str(self.width)
         height: float = "h" + str(self.height)
         depth: float = "d" + str(self.depth)
         wwr: float = "wrr" +  str(self.wwr)
+        """
 
-        fileName: str = folder_utils.nameFile(width,height, depth, wwr)
+        #fileName: str = folder_utils.convertArgsToStrings(width,height, depth, wwr)
+        fileName: str = folder_utils.convertArgsToStrings(self.width,self.height, self.depth, self.wwr)
+
         fileName = self._model.identifier + "_" + fileName
 
         self._model.to_hbjson(name=fileName, folder=folderName)
         print("Successfully saved model to .hbjson file...{0}".format(fileName))
     
+
 
 

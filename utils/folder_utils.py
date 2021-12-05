@@ -4,9 +4,6 @@ from typing import List
 def createFolder(folderName: str) -> None:
     '''Check if directory exists, if not, create it'''
     
-    # reference from https://djangocentral.com/check-if-a-directory-exists-if-not-create-it/
-
-    # You should change 'test' to your preferred folder.
     myDir = folderName
     checkFolder = os.path.isdir(myDir)
 
@@ -14,20 +11,20 @@ def createFolder(folderName: str) -> None:
     if not checkFolder:
         os.makedirs(myDir)
         print("created folder : ", myDir)
-
     else:
         print(myDir, "folder already exists...")
 
 
-def nameFile(*args) -> str:
-    """converts list of args to a string for file nameing"""
+def convertArgsToStrings(*args) -> str:
+    """converts list of args to a concatenated string for file naming"""
 
     if args:
         fileName: str = ""
         for i, arg in enumerate(args):
             # convert to string
             arg = str(arg)
-            if i != len(args)-1:
+            #arg = str(arg)
+            if i != len(arg)-1:
                 # add seperator
                 arg += "_"
                 fileName += arg
@@ -37,6 +34,9 @@ def nameFile(*args) -> str:
         fileName = "untitled.hbjson"
     
     return fileName
+
+
+
 
 def total(xs: List[float]) -> float:
     result: float = 0.0
