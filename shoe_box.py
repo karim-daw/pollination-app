@@ -18,6 +18,7 @@ from utils import folder_utils
 
 
 class Shoebox:
+    """ Shoebox class that creates a honeybee model based off a single room given a set of input parameters"""
 
     def __init__(self, width = 4.0, height = 3.5, depth = 6.0) -> None:
         # init dimensions
@@ -96,6 +97,8 @@ class Shoebox:
 
     # defining room
     def createRoom(self) -> None:
+        """ creates a honeybee room based on width depth and height parameters"""
+
         print("Creating room...")
         # initiate a room
         room = Room.from_box(identifier='single_room', width=self.width, depth=self.depth, height=self.height)
@@ -114,6 +117,7 @@ class Shoebox:
         self._room = room
     
     def createModel(self) -> None:
+        """ creates a honeybee model based on a given honeybee room and a inputed sensor grid"""
 
         # create a model and add the room to it
         print("Creating model...")
@@ -131,6 +135,7 @@ class Shoebox:
         print("Successfully created model...{0}".format(self._model.identifier))
     
     def saveToHBJson(self) -> None:
+        """ saves a .hbsjon file based off of a given honeybee model"""
 
         # check if folder exists, if not creat one
         print("Checking if output folder exists in root dir...")
