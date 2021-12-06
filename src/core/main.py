@@ -1,4 +1,4 @@
-from models.ShoeBox import shoe_box
+from src.models import shoe_box
 
 def createHBjsons() -> None:
     
