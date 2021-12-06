@@ -49,7 +49,12 @@ def convertKeyValueToString(dict,key) -> str:
 
     return concantStr
 
+def getFilesOneFolderUp(folder: str) -> List:
+    """ returns a list of all files in a chosen direcetory one up from current directory"""
+    path_parent = os.path.dirname(os.getcwd())
+    os.chdir(path_parent)
 
+    return os.listdir(folder)
 
 
 

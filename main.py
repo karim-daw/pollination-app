@@ -2,7 +2,7 @@ from models.ShoeBox import shoe_box
 
 def createHBjsons() -> None:
     
-    for i in range(10):
+    for i in range(4):
         
         # increment on shoebox dimensions
         _width = 4.0 + i*0.5
