@@ -34,7 +34,7 @@ class Shoebox:
         self._model = Model
     
 
-    def getParameterFromDict(self,par: str) -> Dict:
+    def getParameterDict(self) -> Dict:
         """
         width: float = "w" + str(self.width)
         height: float = "h" + str(self.height)
@@ -50,7 +50,7 @@ class Shoebox:
             "gridOffset" : self.gridOffset,
         }
 
-        return parameterDict[par]
+        return parameterDict
 
     # getters and setters for init dimensions
     @property
@@ -165,16 +165,16 @@ class Shoebox:
         folderName: str = "honeybee-json-files"
         folder_utils.createFolder(folderName)
 
-        # create file name
-        """
-        width: float = "w" + str(self.width)
-        height: float = "h" + str(self.height)
-        depth: float = "d" + str(self.depth)
-        wwr: float = "wrr" +  str(self.wwr)
-        """
+        # get parameters dictionary
+        paramDict = self.getParameterDict()
 
-        #fileName: str = folder_utils.convertArgsToStrings(width,height, depth, wwr)
-        fileName: str = folder_utils.convertArgsToStrings(self.width,self.height, self.depth, self.wwr)
+        # create file name labels
+        widthLabel = folder_utils.convertKeyValueToString(paramDict,"width")
+        heightLabel = folder_utils.convertKeyValueToString(paramDict,"height")
+        depthLabel = folder_utils.convertKeyValueToString(paramDict,"depth")
+        wwrLabel = folder_utils.convertKeyValueToString(paramDict,"wwr")
+        
+        fileName: str = folder_utils.convertArgsToStrings(widthLabel,heightLabel,depthLabel,wwrLabel)
 
         fileName = self._model.identifier + "_" + fileName
 

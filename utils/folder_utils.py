@@ -24,7 +24,7 @@ def convertArgsToStrings(*args) -> str:
             # convert to string
             arg = str(arg)
             #arg = str(arg)
-            if i != len(arg)-1:
+            if i != len(args)-1:
                 # add seperator
                 arg += "_"
                 fileName += arg
@@ -34,6 +34,21 @@ def convertArgsToStrings(*args) -> str:
         fileName = "untitled.hbjson"
     
     return fileName
+
+def convertKeyValueToString(dict,key) -> str:
+    """ converts a single key value pair into a concatenated string"""
+    if dict and key:
+        # force cast key to string
+        val = dict[key]
+        valStr = str(val)
+        keyStr = str(key)
+
+        concantStr = keyStr + valStr
+    else:
+        concantStr = ""
+
+    return concantStr
+
 
 
 
