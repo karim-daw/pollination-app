@@ -16,7 +16,7 @@ from honeybee.room import Room, Vector3D
 from honeybee.model import Model
 from honeybee_radiance.sensorgrid import SensorGrid
 from ladybug_geometry.geometry3d.mesh import Mesh3D
-from utils import folder_utils
+from utils import *
 
 
 class Shoebox:
