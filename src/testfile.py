@@ -3,7 +3,7 @@ from typing import List
 
 import sys
 #sys.path.append("..")
-from utils import getFilesOneFolderUp
+from utils.folder_utils import getFilesOneFolderUp
 
 print(os.getcwd())
 
