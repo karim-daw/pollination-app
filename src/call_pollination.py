@@ -8,7 +8,8 @@ import os
 from queenbee.io.artifact_source import ProjectFolder
 from queenbee.io.inputs.job import JobPathArgument
 from urllib.request import urlretrieve
-from pollination import PollinationClient, Payload
+from pollination_rest_api.pollination import PollinationClient, Payload
+#from pollination import PollinationClient, Payload
 from utils import folder_utils
 
 if __name__ == '__main__':
@@ -17,7 +18,7 @@ if __name__ == '__main__':
 
     # Create project object and post
     project = Payload.Create(
-        name='karims-good-project4',
+        name='karims-bad-project9',
         description='A very good project',
         public=False
     )
@@ -34,7 +35,8 @@ if __name__ == '__main__':
     print(res.json())
 
     # Create artifacts for 2 versions of a 3D model
-    file_names = folder_utils.getFilesOneFolderUp(folder="honeybee-json-files")
+    file_names = os.listdir("models/honeybee-json-files")
+    print(file_names)
     #file_names = ['model1.hbjson', 'model2.hbjson']
 
 

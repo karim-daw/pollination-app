@@ -8,6 +8,7 @@ from pprint import pprint as print
 from dataclasses import dataclass, asdict
 from queenbee.io.inputs.job import JobPathArgument
 from typing import List
+import sys
 
 
 class Payload:
@@ -59,8 +60,12 @@ class Payload:
             sent to Pollination's bulk storage server which is hosted on a
             different domain.
             """
-            with open(self.key, 'rb') as fp:
-                files = {'file': (self.key, fp)}
+            myPath: str = "models/honeybee-json-files/"
+            myPath += self.key
+            sys.path.append("..")
+
+            with open(myPath, 'rb') as fp:
+                files = {'file': (myPath, fp)}
 
                 res = httpx.post(
                     url=url, data=fields, files=files)
