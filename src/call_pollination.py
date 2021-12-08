@@ -1,4 +1,8 @@
 """
+based off of the example code found here:
+https://github.com/pollination/guides/tree/master/getting-started
+
+
 A script demonstrating the sequence of REST API calls to be made to use
 Pollination (app.pollination.cloud) to create a simulation job that is
 parameterized over multiple 3D models.
@@ -33,8 +37,10 @@ if __name__ == '__main__':
     res = client.add_recipe_to_project(project.name, recipe_filter)
     print(res.json())
 
-    # Create artifacts for 2 versions of a 3D model
+    # Create artifacts for 3D models and weatherfile
     file_names = os.listdir("models/honeybee-json-files")
+    file_names.append(os.listdir("models/wea-files")[0])
+    print(file_names)
 
     # Create 'artifacts' i.e models as payloads to send to pollination
     arguments = []

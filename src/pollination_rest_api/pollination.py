@@ -1,4 +1,8 @@
 """
+based off of the example code found here:
+https://github.com/pollination/guides/tree/master/getting-started
+
+
 A module demonstrating how to wrap the Pollination (api.pollination.cloud) REST
 API for use in a custom application.
 """
@@ -70,10 +74,12 @@ class Payload:
 
             #myPath: str = "models/honeybee-json-files/"
             myPath += self.key
-            sys.path.append("..")
+            #print(myPath)
+            #sys.path.append("..")
 
             with open(myPath, 'rb') as fp:
                 files = {'file': (myPath, fp)}
+                print(files)
 
                 res = httpx.post(
                     url=url, data=fields, files=files)
@@ -155,8 +161,8 @@ class PollinationClient(httpx.Client):
         self.base_url = 'https://api.pollination.cloud'
 
         self.headers['x-pollination-token'] = os.environ['POLLINATION_API_KEY']
-
         self.organization = os.environ['POLLINATION_ORG']
+
 
     def _org_endpoint(self):
         return (
