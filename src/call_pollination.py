@@ -9,7 +9,6 @@ from queenbee.io.artifact_source import ProjectFolder
 from queenbee.io.inputs.job import JobPathArgument
 from urllib.request import urlretrieve
 from pollination_rest_api.pollination import PollinationClient, Payload
-#from pollination import PollinationClient, Payload
 from utils import folder_utils
 
 if __name__ == '__main__':
