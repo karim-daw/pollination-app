@@ -36,9 +36,8 @@ if __name__ == '__main__':
     # Create artifacts for 2 versions of a 3D model
     file_names = os.listdir("models/honeybee-json-files")
 
-    arguments = []
-
     # Create 'artifacts' i.e models as payloads to send to pollination
+    arguments = []
     for name in file_names:
         artifact = Payload.Artifact(key=name)
         res = client.add_file_to_project(project.name, artifact)
