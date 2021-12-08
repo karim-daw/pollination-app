@@ -60,7 +60,15 @@ class Payload:
             sent to Pollination's bulk storage server which is hosted on a
             different domain.
             """
-            myPath: str = "models/honeybee-json-files/"
+            myPath = ""
+            # check if inputed key is a hbjson or an epw
+            if self.key.endswith('.hbjson'):
+                myPath: str = "models/honeybee-json-files/"
+                
+            elif self.key.endswith('.epw'):
+                myPath: str = "models/wea-files/"
+
+            #myPath: str = "models/honeybee-json-files/"
             myPath += self.key
             sys.path.append("..")
 

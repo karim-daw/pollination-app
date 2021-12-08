@@ -17,8 +17,8 @@ if __name__ == '__main__':
 
     # Create project object and post
     project = Payload.Create(
-        name='karims-bad-project9',
-        description='A very good project',
+        name='AnnualDaylight-Shoebox2',
+        description='This is a testing the annual daylight recipe on pollination using a shoebox model',
         public=False
     )
     res = client.create_project(project)
@@ -27,8 +27,8 @@ if __name__ == '__main__':
     # Create recipe filter and post
     recipe_filter = Payload.RecipeFilter(
         owner='ladybug-tools',
-        name='daylight-factor',
-        tag='0.5.6'
+        name='annual-daylight',
+        tag='0.8.7-viz'
     )
     res = client.add_recipe_to_project(project.name, recipe_filter)
     print(res.json())
