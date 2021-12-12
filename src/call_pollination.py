@@ -129,6 +129,7 @@ if __name__ == '__main__':
     body = res.json()
 
     for run in body['resources']:
+        print(run)
         run_id = run['id']
         # The selected recipe determines the outputs
         run_output_name = run['status']['outputs'][0]['name']
