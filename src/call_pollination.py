@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     # Create project object and post
     project = Payload.Create(
-        name='AnnualDaylight-Shoebox2',
+        name='AnnualDaylight-Shoebox4',
         description='This is a testing the annual daylight recipe on pollination using a shoebox model',
         public=False
     )
@@ -39,10 +39,16 @@ if __name__ == '__main__':
 
     # Create artifacts for 3D models and weatherfile
     file_names = os.listdir("models/honeybee-json-files")
-    file_names.append(os.listdir("models/wea-files")[0])
-    print(file_names)
+    file_names.append(os.listdir("weather-data/wea-files")[0])
 
-    # Create 'artifacts' i.e models as payloads to send to pollination
+    """    all_fileNames = []
+        for f in file_names:
+            all_fileNames.append(f)
+            all_fileNames.append(os.listdir("weather-data/wea-files")[0])
+    """
+    #print(file_names)
+
+    # Create 'artifacts' i.e models and files as payloads to send to pollination
     arguments = []
     for name in file_names:
         artifact = Payload.Artifact(key=name)
@@ -56,8 +62,16 @@ if __name__ == '__main__':
             source=project_artifact
         )
 
+        # Construct an argument for the weather file
+        wea_argument = JobPathArgument(
+            name='wea',  # This corresponds to a named input from the recipe
+            source=project_artifact
+        )
+
         # Wrap each argument in its own list to parameterize
+        arguments.append([wea_argument])
         arguments.append([model_argument])
+        
 
     # Construct source URL for recipe
     recipe_source_url = '/'.join(

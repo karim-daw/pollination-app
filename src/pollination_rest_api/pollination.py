@@ -69,8 +69,8 @@ class Payload:
             if self.key.endswith('.hbjson'):
                 myPath: str = "models/honeybee-json-files/"
                 
-            elif self.key.endswith('.epw'):
-                myPath: str = "models/wea-files/"
+            elif self.key.endswith('.wea'):
+                myPath: str = "weather-data/wea-files/"
 
             #myPath: str = "models/honeybee-json-files/"
             myPath += self.key
