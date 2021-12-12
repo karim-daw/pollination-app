@@ -29,6 +29,5 @@ if __name__ == '__main__':
 
         fileName = folderName +"/" + f'{run_id}-{run_output_name}.zip'
 
-
         # Save to a local file
         urlretrieve(url,fileName )
