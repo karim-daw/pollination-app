@@ -11,3 +11,6 @@ venv.bak/
 
 # vscode
 .vscode/
+
+# rtf
+.rtf/

@@ -7,6 +7,8 @@ This script shows how to:
     4. create a sensor grid and add it to the room
     5. save the room as an HBJSON file
 
+https://discourse.pollination.cloud/t/exporting-hbjson-for-pollination-using-honeybee-libs-in-python/1123/3
+
 """
 
 from genericpath import isdir
