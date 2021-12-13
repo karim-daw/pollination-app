@@ -39,13 +39,6 @@ if __name__ == '__main__':
 
     # Create artifacts for 3D models and weatherfile
     file_names = os.listdir("models/honeybee-json-files")
-    #file_names.append(os.listdir("weather-data/wea-files")[0])
-
-    """    all_fileNames = []
-        for f in file_names:
-            all_fileNames.append(f)
-            all_fileNames.append(os.listdir("weather-data/wea-files")[0])
-    """
 
     # Create seperate payload for weather file
     weaFile = os.listdir("weather-data/wea-files")[0]
