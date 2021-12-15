@@ -10,3 +10,12 @@ account = get_default_account()
 
 print(account)
 client.authenticate(token=account.token)
+
+# create a new stream. this returns the stream id
+new_stream_id = client.stream.create(name="a shiny new stream")
+
+# use that stream id to get the stream from the server
+new_stream = client.stream.get(id=new_stream_id)
+
+
+print(new_stream)
