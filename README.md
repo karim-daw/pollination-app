@@ -5,3 +5,5 @@ This project attempts to work on automated workflows using the speckle and polli
 The ambition is that users would be able to submit geometry directly from their natie software and request certain analysis types, and all the configuration and simulation would be done in the background without having to open grasshopper or any other simulation script. After the simulations are done, the results would be served back into the native software of the user as soon as the requested information is finished computing. 
 
 Here is a WIP diagram of the workflow
+
+![image](https://user-images.githubusercontent.com/33934349/146457986-24a0665e-203c-40c5-8977-269b74ad567b.png)
