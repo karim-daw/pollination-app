@@ -127,7 +127,6 @@ class Shoebox:
         print("Creating room...")
         # initiate a room
         room = Room.from_box(identifier='single_room', width=self.width, depth=self.depth, height=self.height)
-
         # get south facing wall
         # get south facing wall using wall face normal angle.
         south_vector = Vector3D(0, -1, 0)

@@ -25,6 +25,8 @@ res = operations.receive(commit.referencedObject, transport)
 # tests
 print(res.get_dynamic_member_names())
 
+topFloorSurface = []
 for floor in res['@Floor']:
-    for face in floor['_Faces']:
-        print(face.get_member_names())
+    for vert in floor.Vertices:
+        print(vert.z)
+
