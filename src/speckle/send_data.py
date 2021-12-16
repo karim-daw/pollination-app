@@ -7,11 +7,11 @@ from create_stream import Stream
 # init stream with host server
 myStream = Stream("https://speckle.xyz/")
 
-# create stream
-myStream.createStream("Karim's Brand new stream")
-
 # get speckle client from stream
 myClient = myStream.client
+
+# create stream
+myStream.createStream("Karim's Brand new stream")
 
 # get stream Id
 myStreamId = myStream.streamId

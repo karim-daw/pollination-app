@@ -8,27 +8,25 @@ class Stream:
         
         self.host = host
         self.streamId = ""
-        self.client = SpeckleClient()
-    
-    def createStream(self, streamName: str):
 
         # initialise the client
-        client = SpeckleClient(host=self.host) # or whatever your host is
-        # client = SpeckleClient(host="localhost:3000", use_ssl=False) or use local server
-        self.client = client
+        self.client = SpeckleClient(host=self.host)
+    
+    def createStream(self, streamName: str):
+        """ creates a speckle by given stream name and returns stream """
 
         try:
             # authenticate the client with a token
             account = get_default_account()
-            client.authenticate(token=account.token)
+            self.client.authenticate(token=account.token)
         except:
             print("Could not find default account...have you installed speckle on your machine?")
 
         # create a new stream. this returns the stream id
-        new_stream_id = client.stream.create(name=streamName)
+        new_stream_id = self.client.stream.create(name=streamName)
 
         # use that stream id to get the stream from the server
-        new_stream = client.stream.get(id=new_stream_id)
+        new_stream = self.client.stream.get(id=new_stream_id)
 
         print("Created stream with stream id... {}".format(new_stream_id))
 
