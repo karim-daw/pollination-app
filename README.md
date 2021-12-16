@@ -6,4 +6,4 @@ The ambition is that users would be able to submit geometry directly from their 
 
 Here is a WIP diagram of the workflow
 
-![image](https://user-images.githubusercontent.com/33934349/146457986-24a0665e-203c-40c5-8977-269b74ad567b.png)
+![image](https://user-images.githubusercontent.com/33934349/146458180-609c1983-7b8d-4ff6-9395-02c251e70c50.png)
