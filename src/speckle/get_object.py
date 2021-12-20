@@ -25,13 +25,20 @@ res = operations.receive(commit.referencedObject, transport)
 # tests
 print(res.get_dynamic_member_names())
 
-topFloorSurface = []
+# extracting the vertecies that signify the top of each floor
+topFloorPoints = []
+allPoints = []
 for floor in res['@Floor']:
-    print("new slab")
-    # sort slab verteces by z
+
+    # sort slab verteces by z and get top points
     sortedZ = sorted(floor.Vertices, key=lambda k: k["z"])
-    print(len(sortedZ))
-    
-    print(sortedZ)
+
+    for i, value in enumerate(sortedZ):
+        if i < len(sortedZ) * 0.5:
+            topFloorPoints.append(value)
+
+
+print(len(topFloorPoints))
+
         
 
