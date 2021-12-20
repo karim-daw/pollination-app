@@ -27,6 +27,11 @@ print(res.get_dynamic_member_names())
 
 topFloorSurface = []
 for floor in res['@Floor']:
-    for vert in floor.Vertices:
-        print(vert.z)
+    print("new slab")
+    # sort slab verteces by z
+    sortedZ = sorted(floor.Vertices, key=lambda k: k["z"])
+    print(len(sortedZ))
+    
+    print(sortedZ)
+        
 
