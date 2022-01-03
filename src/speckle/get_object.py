@@ -3,6 +3,8 @@ from specklepy.api import operations
 from specklepy.api.client import SpeckleClient
 from specklepy.api.credentials import get_default_account, get_local_accounts
 import json
+from ladybug_geometry.geometry3d import face, pointvector
+from honeybee_radiance import sensorgrid
 
 all_accounts = get_local_accounts() # get back a list
 account = get_default_account()
@@ -38,7 +40,26 @@ for floor in res['@Floor']:
             topFloorPoints.append(value)
 
 
-print(len(topFloorPoints))
+print("point 0")
+print((topFloorPoints[0].x))
+
+testPoint0 = topFloorPoints[0]
+testPoint1 = topFloorPoints[1]
+testPoint2 = topFloorPoints[2]
+testPoint3 = topFloorPoints[3]
+
+testPoints = [testPoint0,testPoint1,testPoint2,testPoint3]
+
+lb_pnts = [pointvector.Point3D(pnt.x,pnt.y,pnt.z) for pnt in testPoints]
+lb_face = face.Face3D(lb_pnts)
+
+lb_sg = sensorgrid.SensorGrid.from_face3d("test_sensor_grid",[lb_face],1,1,0.8,False)
+
+print(lb_sg)
+
+
+
+
 
         
 
