@@ -10,7 +10,7 @@ all_accounts = get_local_accounts() # get back a list
 account = get_default_account()
 
 # provide any stream, branch, commit, object, or globals url
-wrapper = StreamWrapper("https://speckle.xyz/streams/f1096e83ac/commits/74e202d52c")
+wrapper = StreamWrapper("https://speckle.xyz/streams/c029aa9054/commits/bede24795b")
 
 # get an authenticated SpeckleClient if you have a local account for the server
 client = wrapper.get_client()
@@ -39,6 +39,10 @@ for floor in res['@Floor']:
         if i < len(sortedZ) * 0.5:
             topFloorPoints.append(value)
 
+# extracting verteces for glass surfaces
+for glassSurface in res['@Glass']:
+    print("corner point lengths")
+    print(len(glassSurface.Vertices))
 
 print("point 0")
 print((topFloorPoints[0].x))
@@ -55,7 +59,7 @@ lb_face = face.Face3D(lb_pnts)
 
 lb_sg = sensorgrid.SensorGrid.from_face3d("test_sensor_grid",[lb_face],1,1,0.8,False)
 
-print(lb_sg)
+#print(lb_sg)
 
 
 
