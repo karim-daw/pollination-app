@@ -42,7 +42,11 @@ for floor in res['@Floor']:
 # extracting verteces for glass surfaces
 for glassSurface in res['@Glass']:
     print("corner point lengths")
-    print(len(glassSurface.Vertices))
+    # Create a lady bug face from this
+    lb_glass_pnts = [pointvector.Point3D(pnt.x,pnt.y,pnt.z) for pnt in glassSurface.Vertices]
+    lb_glass_face: face = face.Face3D(lb_glass_pnts)
+    lb_glass_face.apertures_by_ratio(ratio = 0.99)
+    print(lb_glass_face)    
 
 print("point 0")
 print((topFloorPoints[0].x))
