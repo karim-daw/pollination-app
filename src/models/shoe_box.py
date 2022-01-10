@@ -22,7 +22,8 @@ from utils import *
 
 
 class Shoebox:
-    """ Shoebox class that creates a honeybee model based off a single room given a set of input parameters"""
+    """ Shoebox class that creates a honeybee model 
+    based off a single room given a set of input parameters"""
 
     def __init__(self, width = 4.0, height = 3.5, depth = 6.0) -> None:
         # init dimensions

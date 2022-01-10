@@ -48,6 +48,10 @@ for glassSurface in res['@Glass']:
     lb_glass_face.apertures_by_ratio(ratio = 0.99)
     print(lb_glass_face)    
 
+# TO DO
+# figure out how to convert these surfaces into some kind of room
+
+
 print("point 0")
 print((topFloorPoints[0].x))
 
