@@ -2,6 +2,7 @@
 from pollination_rest_api.pollination import PollinationClient, Payload
 from urllib.request import urlretrieve
 from utils import folder_utils
+import certifi  #added import
 
 
 if __name__ == '__main__':
@@ -30,4 +31,4 @@ if __name__ == '__main__':
         fileName = folderName +"/" + f'{run_id}-{run_output_name}.zip'
 
         # Save to a local file
-        urlretrieve(url,fileName )
+        urlretrieve(url,fileName)
